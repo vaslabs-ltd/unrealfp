@@ -1,8 +1,21 @@
 # The Docker image that will be used to build your app
 image: python:3.13.1-slim
 # Functions that should be executed before the build script is run
-before_script: []
+
+stages:
+  - test
+  - pages
+
+test_generate_docs:
+  stage: test
+  script:
+    - cd generate_docs_utils
+    - pip install -r requirements-dev.txt
+    - python -m pytest tests/
+
+
 pages:
+  stage: pages
   script:
     - ./generate_docs.sh
     - mkdir public

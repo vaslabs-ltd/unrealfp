@@ -99,18 +99,7 @@ def as_html(block):
 
 def document_blueprint_metadata(blueprint: Blueprint, f):
     f.write(f"\n### {blueprint.name}\n\n")
-    f.write("\n<div markdown=\"1\">\n")
-
-    f.write(f"<details markdown=\"1\">\n")
-    f.write(f"<summary>Inputs</summary>\n\n")
-    for input in blueprint.inputs:
-        if (input.delegate):
-            f.write(f"- **{input.name}** : {input.unreal_category}\n")
-            write_delegate_details(input.delegate, f)
-        else:
-            f.write(f"- **{input.name}** : {input.unreal_container_type} {input.unreal_category}\n")
-    f.write(f"\n</details>\n\n")
-    f.write("\n</div>\n\n")
+    write_inputs(blueprint.inputs, f)
     write_outputs(blueprint.outputs, f)
 
 
@@ -134,26 +123,17 @@ def write_inputs(inputs: list[BlueprintInput], f):
     f.write(f"<details markdown=\"1\">\n")
     f.write(f"<summary>Inputs</summary>\n\n")
     for input in inputs:
-        if (input.delegate):
-            f.write(f"- **{input.name}** : Delegate\n")
+        if (input.delegate is not None):
+            f.write(f"- {input.name}: **Delegate**\n")
             write_delegate_details(input.delegate, f)
         else:
-            f.write(f"- **{input.name}** : {input.unreal_signature}\n")
+            f.write(f"- {input.name}: **{input.unreal_signature}**\n")
     f.write(f"\n</details>\n\n")
     f.write("\n</div>\n")
 
 def write_delegate_details(delegate: Delegate, f):
-    f.write(f"    - {delegate.name}: `{(format_inputs(delegate.inputs))} => {(format_outputs(delegate.outputs))}`\n")
+    f.write(f"    - {delegate.name}: `{delegate.unreal_signature}`\n")
 
-def format_inputs(inputs: list[DelegateInput]):
-    """ format inputs in the form of field_type, ..."""
-    return ", ".join([f"{input.type}" for input in inputs])
-
-def format_outputs(outputs: list[DelegateOutput]):
-    """ format outputs in the form of field_type, ..."""
-    if not outputs:
-        return "()"
-    return ", ".join([output.unreal_signature for output in outputs])
 
 if __name__ == "__main__":
     scan_dir = sys.argv[1]

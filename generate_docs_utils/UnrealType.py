@@ -13,14 +13,17 @@ class UnrealType(object):
         self.unreal_category = self.category(type)
         self.unreal_container_type = self.container_type(type)
         self.unreal_signature = self.unreal_signature_text(type)
+        self.is_reference = type.endswith("&")
 
     def category(self, type) -> str:
         if type.startswith("TArray<"):
             category = type.split("<")[1].split(">")[0]
+        elif type.endswith("&"):
+            category = type[:-1] 
         else:
             category = type
         
-        return unreal_types.get(category, 'object')
+        return unreal_types.get(category, category)
         
     def container_type(self, type) -> str:
         if type.startswith("TArray"):
@@ -36,5 +39,8 @@ class UnrealType(object):
             type_indicator = unreal_types.get(type.split("<")[1].split(">")[0], 'object')
             container = type.split("<")[0].lstrip("T")
             return f"{type_indicator} {container}"
+        elif type.endswith("&"):
+            type_indicator = type[:-1]
+            return unreal_types.get(type_indicator, 'object')
         else:
             return unreal_types.get(type, 'object')

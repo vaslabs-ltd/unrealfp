@@ -43,6 +43,7 @@ class Delegate(object):
         self.outputs = outputs
         self.kind = kind
         self.name = name
+        self.unreal_signature = f"{format_inputs(inputs)} => {format_outputs(outputs)}"
 
     def __str__(self):
         return f'Delegate(name={self.name}, description={self.description}, inputs={self.inputs}, outputs={self.outputs})'
@@ -69,7 +70,15 @@ def parse_delegates(lines: list[str]) -> list[Delegate]:
             delegates.append(delegate)
     return delegates
         
+def format_inputs(inputs: list[DelegateInput]):
+    """ format inputs in the form of field_type, ..."""
+    return ", ".join([f"{input.unreal_signature}" for input in inputs])
 
+def format_outputs(outputs: list[DelegateOutput]):
+    """ format outputs in the form of field_type, ..."""
+    if not outputs:
+        return "()"
+    return ", ".join([output.unreal_signature for output in outputs])
 
 def parse_delegate(delegateLine: str):
     """

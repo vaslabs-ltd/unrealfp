@@ -47,6 +47,17 @@ class TestBlueprintParsing:
 
         assert blueprint.outputs == [BlueprintOutput("TArray<int32>")]
 
+    def test_blueprint_fstring_input(self):
+        input = [
+            """UFUNCTION(BlueprintCallable, Category = "Functional|Arrays")""",
+            """static FString MkString(const TArray<FString>& Array, const FString& Separator);"""
+        ]
+        blueprint = parse_blueprint([], input)
+        assert blueprint.inputs[0].unreal_category == "string"
+        assert blueprint.inputs[0].is_const
+        assert blueprint.inputs[0].is_reference == True
+        assert blueprint.inputs[0].delegate is None
+        assert blueprint.outputs[0].unreal_category == "string"
     
     def test_multiple_blueprint_blocks_are_parsed(self):
         input = [

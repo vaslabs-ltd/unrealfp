@@ -24,13 +24,13 @@ class TypeWrapper(UnrealType):
         super().__init__(type)
 
 class BlueprintInput(UnrealType):
-    def __init__(self, type: str, name: str, is_const, is_reference, delegate: Optional[Delegate]):
+    def __init__(self, type: str, name: str, is_const, delegate: Optional[Delegate]):
         super().__init__(type)
         self.name = name
         self.delegate = delegate
         self.is_const = is_const
-        self.is_reference = is_reference
         self.GUID = uuid.uuid4().hex.upper()
+        self.unreal_category = self.category(type, delegate)
 
     def __eq__(self, value):
         if (value == None):
@@ -59,15 +59,11 @@ class BlueprintOutput(UnrealType):
 
 
 class Blueprint(object):
-    def __init__(self, name: str, meta: BlueprintMetadata, inputs: list[BlueprintInput], outputs: list):
+    def __init__(self, name: str, meta: BlueprintMetadata, inputs: list[BlueprintInput], outputs: list[BlueprintOutput]):
         self.name = name
         self.inputs = inputs
         self.outputs = outputs
         self.meta = meta
-
-
-    def __str__(self):
-        return f'Blueprint(name={self.name}, meta={str(self.meta)}, inputs={str(self.inputs)}, outputs={str(self.outputs)})'
 
 class BlueprintList(object):
     def __init__(self, member_name: str, blueprints: list[Blueprint]):
@@ -180,7 +176,6 @@ def parse_blueprint_input(pre_parsed_delegate: list[Delegate], parameter: str) -
     name = ""
     type = ""
     is_const = False
-    is_reference = False
 
     for part in parts[::-1]:
         if (name == ""):
@@ -191,11 +186,9 @@ def parse_blueprint_input(pre_parsed_delegate: list[Delegate], parameter: str) -
             if (part == "const"):
                 is_const = True
 
-    is_reference = type.endswith("&")
-
     input_delegate = None
     for delegate in pre_parsed_delegate:
         if delegate.name == type:
             input_delegate = delegate
             break
-    return BlueprintInput(name=name, type=type, is_const=is_const, is_reference=is_reference, delegate=input_delegate)
+    return BlueprintInput(name=name, type=type, is_const=is_const, delegate=input_delegate)

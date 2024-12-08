@@ -10,6 +10,7 @@ class TestDelegateParsing:
         assert delegate.outputs == []
         assert delegate.kind == DelegateKind(False, 1)
         assert delegate.name == "FForeachInt64Delegate"
+        assert delegate.unreal_signature == "int64 => ()"
 
     def test_delegate_return_val_one_param(self):
         input = "DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(bool, FFilterInt32Delegate, int32, Element);"
@@ -18,6 +19,7 @@ class TestDelegateParsing:
         assert delegate.outputs == [DelegateOutput("bool")]
         assert delegate.kind == DelegateKind(True, 1)
         assert delegate.name == "FFilterInt32Delegate"
+        assert delegate.unreal_signature == "int => bool"
 
     def test_delegate_return_val_two_params(self):
         input = "DECLARE_DYNAMIC_DELEGATE_RetVal_TwoParams(bool, FFilterInt32Delegate, int32, Element, int32, Element2);"

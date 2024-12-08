@@ -69,7 +69,7 @@ def serialize_output_property(output: BlueprintOutput) -> str:
    return create_output_pin(output.GUID, "ReturnValue", "", category, output.unreal_container_type)
 
 def serialize_input_property(input: BlueprintInput) -> str:
-   if input.delegate:
+   if input.delegate is not None:
       return create_delegate_input_pin(input.GUID, input.name, "", input.delegate.name)
    category = input.unreal_category
    return create_input_pin(input.GUID, input.name, "", category, input.unreal_container_type, True, True)
@@ -85,7 +85,7 @@ def create_output_pin(pin_id: str, name: str, tooltip: str, category: str, conta
    return f"""Pin (PinId={pin_id},{pin_ref(name, tooltip)},{create_return_pin(category, container_type)})"""
 
 def pin_ref(name: str, tooltip: str) -> str:
-   return f"""PinName="{name}",PinToolTip="{tooltip}","""
+   return f"""PinName="{name}",PinToolTip="{tooltip}" """
 
 def create_in_pin(category: str, container_type: str, is_reference: bool, is_const: bool) -> str:
    return f"""
@@ -99,7 +99,7 @@ def create_in_pin(category: str, container_type: str, is_reference: bool, is_con
    PinType.bIsConst={is_const},
    PinType.bIsWeakPointer=False,
    PinType.bIsUObjectWrapper=False,
-   PinType.bSerializeAsSinglePrecisionFloat=False,
+   PinType.bSerializeAsSinglePrecisionFloat=False
    """.replace(",\n", ",").replace("   ", " ")
 
 def create_delegate_pin(delegate_name: str) -> str:

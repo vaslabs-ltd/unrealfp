@@ -20,8 +20,8 @@ mkdocs_base_config = {
         'color_mode': 'dark',
         'include_sidebar': True
     },
-    'markdown_extensions': ['md_in_html', 'pymdownx.extra']
-        
+    'markdown_extensions': ['md_in_html', 'pymdownx.extra'],
+    'repo_url': 'https://gitlab.com/vaslabs/unrealfp'
     
 }
 

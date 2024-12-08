@@ -15,6 +15,7 @@ nav:
 - functions: functions.md
 - flatmap: flatmap.md
 - arrays: arrays.md
+repo_url: https://gitlab.com/vaslabs/unrealfp
 site_name: UnrealFP
 theme:
   color_mode: dark

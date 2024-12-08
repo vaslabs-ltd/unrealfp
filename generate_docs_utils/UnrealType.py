@@ -23,7 +23,7 @@ class UnrealType(object):
         else:
             category = type
         
-        return unreal_types.get(category, category)
+        return unreal_types.get(category, 'object')
         
     def container_type(self, type) -> str:
         if type.startswith("TArray"):

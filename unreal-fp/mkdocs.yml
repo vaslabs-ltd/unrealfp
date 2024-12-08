@@ -1,0 +1,22 @@
+extra_css:
+- stylesheets/unreal-fp.css
+extra_javascript:
+- javascripts/klee.min.js
+markdown_extensions:
+- md_in_html
+- pymdownx.extra
+nav:
+- foreach: foreach.md
+- fold: fold.md
+- forall: forall.md
+- exists: exists.md
+- map: map.md
+- filter: filter.md
+- functions: functions.md
+- flatmap: flatmap.md
+- arrays: arrays.md
+site_name: UnrealFP
+theme:
+  color_mode: dark
+  include_sidebar: true
+  name: material

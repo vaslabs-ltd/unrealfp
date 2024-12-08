@@ -60,7 +60,8 @@ def serialize_input_properties(inputs: list[BlueprintInput]) -> str:
 def serialize_output_properties(outputs: list[BlueprintOutput]) -> str:
    serialized_outputs = []
    for output in outputs:
-      serialized_outputs.append(f"CustomProperties {serialize_output_property(output)}")
+      if (output.type != "void"):
+         serialized_outputs.append(f"CustomProperties {serialize_output_property(output)}")
    return "\n".join(serialized_outputs)
 
 def serialize_output_property(output: BlueprintOutput) -> str:

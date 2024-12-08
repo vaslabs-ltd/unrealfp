@@ -3,7 +3,8 @@ unreal_types = {
    "int32": "int",
    "int64": "int64",
    "float": "float",
-   "bool": "bool"
+   "bool": "bool",
+   "void": "()"
 }
 
 class UnrealType(object):

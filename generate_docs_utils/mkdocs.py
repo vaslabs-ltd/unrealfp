@@ -29,7 +29,8 @@ generator_config = {
     'excluded_files': [
         'UnrealFunctionalProgramming.h',
         'UnrealFunctionalProgrammingBPLibrary.h'
-    ]
+    ],
+    'readme': '../README.md'
 }
 
 def scan_directory(path: str) -> Generator[str, any, None]:
@@ -161,3 +162,11 @@ if __name__ == "__main__":
     scanned_files = scan_directory(scan_dir)
     files_to_document = generate_files(docs_dir, scanned_files)
     generate_markdown_for_each_file(docs_dir, files_to_document)
+    
+    # if readme is set copy it to the docs as index.md
+    if 'readme' in generator_config:
+        readme = generator_config['readme']
+        with open(readme, "r") as f:
+            readme_content = f.read()
+        with open(os.path.join(docs_dir, "docs/index.md"), "w") as f:
+            f.write(readme_content)

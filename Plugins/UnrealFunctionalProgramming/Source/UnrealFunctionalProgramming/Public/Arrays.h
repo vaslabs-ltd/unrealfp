@@ -57,7 +57,6 @@ public:
      * @param Array The input array of FStrings.
      * @param Separator The string to insert between each element.
      */
-
     UFUNCTION(BlueprintCallable, Category = "Functional|Arrays")
     static FString MkString(const TArray<FString>& Array, const FString& Separator);
 

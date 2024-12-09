@@ -43,7 +43,7 @@ class UNREALFUNCTIONALPROGRAMMING_API UMap : public UBlueprintFunctionLibrary
 
 public:
     // ================ MAP ========================================
-        /** Map function from int32 to int32 */
+    /** Map function from int32 to int32 */
     UFUNCTION(BlueprintCallable, Category = "Functional")
     static TArray<int32> Map_Int32ToInt32(const TArray<int32>& Array, FMapInt32ToInt32Delegate Function);
 
@@ -55,7 +55,7 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Functional")
     static TArray<bool> Map_Int32ToBool(const TArray<int32>& Array, FMapInt32ToBoolDelegate Function);
 
-    /** Map function from int32 to FString */
+    /** Map function from int32 to string */
     UFUNCTION(BlueprintCallable, Category = "Functional")
     static TArray<FString> Map_Int32ToString(const TArray<int32>& Array, FMapInt32ToStringDelegate Function);
 

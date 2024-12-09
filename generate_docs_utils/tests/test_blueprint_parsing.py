@@ -13,7 +13,7 @@ class TestBlueprintParsing:
         ]
         blueprint = parse_blueprint(pre_parsed_delegates, input)
 
-        assert blueprint.meta.description == ""
+        assert blueprint.meta.description.description == ""
         assert blueprint.meta.category == "Functional"
         assert blueprint.name == "ForeachApply_Int32"
         assert blueprint.meta.callable
@@ -46,6 +46,33 @@ class TestBlueprintParsing:
         assert blueprint.outputs[0].unreal_signature == "int Array"
 
         assert blueprint.outputs == [BlueprintOutput("TArray<int32>")]
+
+    def test_blueprint_parses_comments(self):
+        input = [
+                "/**", 
+                "* Concatenates the elements of an int32 array into a single FString, separated by the specified separator.",
+                "* ",
+                "* @param Array The input array of integers.",
+                "* @param Separator The string to insert between each element.*/",
+                """UFUNCTION(BlueprintCallable, Category = "Functional|Arrays")""",
+                "static FString MkString_Int32(const TArray<int32>& Array, const FString& Separator);"
+        ]
+
+        blueprint = parse_blueprint([], input)
+        assert blueprint.meta.description.description == "Concatenates the elements of an int32 array into a single FString, separated by the specified separator."
+        assert blueprint.meta.description.param_descriptions["Array"] == "The input array of integers."
+        assert blueprint.meta.description.param_descriptions["Separator"] == "The string to insert between each element."
+
+        input = [
+                """/** ForeachApply for int32 arrays */""",
+                """UFUNCTION(BlueprintCallable, Category = "Functional")""",
+                """static void ForeachApply_Int32(const TArray<int32>& Array, FForeachInt32Delegate Function);"""
+
+        ]
+
+        blueprint = parse_blueprint([], input)
+        assert blueprint.meta.description.description == "ForeachApply for int32 arrays"
+
 
     def test_blueprint_fstring_input(self):
         input = [
@@ -80,13 +107,17 @@ class TestBlueprintParsing:
         expected_blueprint = parse_blueprint(pre_parsed_delegates, input[0:2])
 
         assert blueprints[0].name == expected_blueprint.name
-        assert blueprints[0].meta == expected_blueprint.meta
+        assert blueprints[0].meta.category == expected_blueprint.meta.category
+        assert blueprints[0].meta.description.description == expected_blueprint.meta.description.description
+        assert blueprints[0].meta.description.param_descriptions == expected_blueprint.meta.description.param_descriptions
         assert blueprints[0].inputs == expected_blueprint.inputs
         assert blueprints[0].outputs == expected_blueprint.outputs
 
         expected_blueprint = parse_blueprint(pre_parsed_delegates, input[2:4])
         assert blueprints[1].name == expected_blueprint.name
-        assert blueprints[1].meta == expected_blueprint.meta
+        assert blueprints[1].meta.description.description == expected_blueprint.meta.description.description
+        assert blueprints[1].meta.category == expected_blueprint.meta.category
+        assert blueprints[1].meta.description.param_descriptions == expected_blueprint.meta.description.param_descriptions
         assert blueprints[1].inputs == expected_blueprint.inputs
         assert blueprints[1].outputs == expected_blueprint.outputs
 

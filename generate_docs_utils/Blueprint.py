@@ -6,17 +6,16 @@ import uuid
 
 from UnrealType import UnrealType
 
+class BlueprintDescription(object):
+    def __init__(self, description: str, param_descriptions: dict[str, str]):
+        self.description = description
+        self.param_descriptions = param_descriptions
+
 class BlueprintMetadata(object):
-    def __init__(self, category: str, description: str, callable: bool):
+    def __init__(self, category: str, description: BlueprintDescription, callable: bool):
         self.category = category
         self.description = description
         self.callable = callable
-
-    def __str__(self):
-        return f'BlueprintMetadata(category={self.category}, description={self.description}, callable={self.callable})'
-
-    def __eq__(self, value):
-        return value.category == self.category and value.description == self.description and value.callable == self.callable
 
 class TypeWrapper(UnrealType):
 
@@ -78,32 +77,107 @@ def parse_blueprints(pre_parsed_delegates: list[Delegate], lines: list[str]) -> 
         Parses all blueprints from header file that have a line UFUNCTION above them,
         ignores the rest
     """
-    blueprint_lines = _clean_blueprint_lins(lines)
+    comment_counters, blueprint_lines = _clean_blueprint_lines(lines)
     blueprints = []
-    for i in range(0, len(blueprint_lines), 2):
-        blueprints.append(parse_blueprint(pre_parsed_delegates, blueprint_lines[i:i+2]))
+    lines_read = 0
+    for comment_counter in comment_counters:
+        next_chunk_size = lines_read + comment_counter + 2
+        blueprint_chunk = blueprint_lines[lines_read:next_chunk_size]
+        lines_read = next_chunk_size
+        blueprints.append(parse_blueprint(pre_parsed_delegates, blueprint_chunk))
 
     return blueprints
 
-def _clean_blueprint_lins(lines: list[str]) -> tuple[str, list[str]]:
+def _clean_blueprint_lines(lines: list[str]) -> tuple[list[int], list[str]]:
     next_line_is_blueprint = False
-    cleaned_lines = []
+    reading_doc_comments = False
+    has_comments = False
+    cleaned_lines: list[str] = []
+    comment_lines: list[int] = []
+    comment_counter = 0
     for line in lines:
         cleaned_line = line.strip()
-        if (not next_line_is_blueprint and cleaned_line.startswith("UFUNCTION")):
+        if (not next_line_is_blueprint and cleaned_line.startswith("/**")):
+            reading_doc_comments = True
+            comment_counter = 1
+            cleaned_lines.append(cleaned_line)
+            has_comments = True
+            if (cleaned_line.endswith("*/")):
+                reading_doc_comments = False
+                comment_lines.append(comment_counter)
+                comment_counter = 0
+        elif reading_doc_comments:
+            cleaned_lines.append(cleaned_line)
+            comment_counter += 1
+            if (cleaned_line.endswith("*/")):
+                reading_doc_comments = False
+                comment_lines.append(comment_counter)
+                comment_counter = 0
+        elif (not next_line_is_blueprint and cleaned_line.startswith("UFUNCTION")):
             next_line_is_blueprint = True
             cleaned_lines.append(cleaned_line)
+            if not has_comments:
+                comment_lines.append(0)
         elif (next_line_is_blueprint):
             next_line_is_blueprint = False
             cleaned_lines.append(cleaned_line)
-    return cleaned_lines
+    return comment_lines, cleaned_lines
 
 def parse_blueprint(pre_parsed_delegates, lines: list[str]) -> Blueprint:
-    meta = parse_blueprint_metadata(lines[0])
-    blueprint = parse_blueprint_line(pre_parsed_delegates, meta, lines[1])
+    description = read_doc_comments_if_any(lines)
+    blueprint_lines = skip_comments(lines)
+    meta = parse_blueprint_metadata(blueprint_lines[0], description)
+    blueprint = parse_blueprint_line(pre_parsed_delegates, meta, blueprint_lines[1])
     return blueprint
 
-def parse_blueprint_metadata(line: str) -> BlueprintMetadata:
+def skip_comments(lines: list[str]) -> list[str]:
+    offset = 0
+    start_skipping = False
+    for i, line in enumerate(lines):
+        cleaned_line = line.strip()
+        if (not start_skipping and cleaned_line.startswith("/**")):
+            start_skipping = True
+            if (cleaned_line.endswith("*/")):
+                offset = i + 1
+                break
+        elif (start_skipping):
+            if (cleaned_line.endswith("*/")):
+                offset = i + 1
+                break
+    return lines[offset:]
+
+def read_doc_comments_if_any(lines: list[str]) -> str:
+    """
+    Reads doc comments from a list of lines
+    """
+    comments = []
+    comments_follow = False
+    description = ""
+    param_descriptions = {}
+    for line in lines:
+        cleaned_line = line.strip()        
+        if (not comments_follow and cleaned_line.startswith("/**")):
+            comments_follow = True
+            if cleaned_line.endswith("*/"):
+                comments.append(cleaned_line.rstrip("/**").lstrip("*/"))
+                comments_follow = False
+        elif (comments_follow):
+            text_line = cleaned_line.lstrip("*").rstrip("*/").strip()
+            if (text_line.startswith("@param")):
+                cleaned_text_line = text_line.rstrip("*/")
+                parts = cleaned_text_line.split(" ")
+                param_name = parts[1]
+                param_description = " ".join(parts[2:])
+                param_descriptions[param_name] = param_description
+            else:
+                comments.append(text_line)
+            if (cleaned_line.endswith("*/")):
+                comments_follow = False
+    description = "\n".join(filter(lambda x: len(x.strip()) > 0, comments))
+    return BlueprintDescription(description.strip(), param_descriptions)
+
+
+def parse_blueprint_metadata(line: str, description: BlueprintDescription) -> BlueprintMetadata:
     """
     Parses contents of UFUNCTION(BlueprintCallable, Category = "Functional")
     into BlueprintMetadata
@@ -120,16 +194,13 @@ def parse_blueprint_metadata(line: str) -> BlueprintMetadata:
     blueprint_metadata_parts = list(map(lambda x: x.strip(), effective_line.split(",")))
     callable = blueprint_metadata_parts[0] == "BlueprintCallable"
     category = ""
-    description = ""
     for blueprint_metadata_part in blueprint_metadata_parts[1:]:
         if blueprint_metadata_part.find("="):
             parts = blueprint_metadata_part.split("=")
             parameter = parts[0].strip()
             if parameter == "Category":
                 category = parts[1].strip().strip("\"")
-            elif parameter == "ToolTip":
-                description = parts[1].strip()
-                
+
             # add more metadata here
 
     return BlueprintMetadata(category, description, callable)

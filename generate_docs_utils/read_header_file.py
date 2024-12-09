@@ -19,14 +19,27 @@ def extract_blueprint_lines(lines: list[str]):
     public_started = False
     next_line_is_blueprint = False
     next_line_is_class_line = False
+    blueprint_function_doc = []
     blueprint_lines = []
+    comments_follow = False
     class_line = ""
     for line in lines:
         cleaned_line = line.strip()
         if (public_started):
+            if (not next_line_is_blueprint and cleaned_line.startswith("/**")):
+                comments_follow = True
+                blueprint_function_doc.append(cleaned_line)
+                if (cleaned_line.endswith("*/")):
+                    comments_follow = False
+            elif comments_follow:
+                blueprint_function_doc.append(cleaned_line)
+                if (cleaned_line.endswith("*/")):
+                    comments_follow = False
             if (not next_line_is_blueprint and cleaned_line.startswith("UFUNCTION")):
                 next_line_is_blueprint = True
+                blueprint_lines.extend(blueprint_function_doc)
                 blueprint_lines.append(cleaned_line)
+                blueprint_function_doc = []
             elif (next_line_is_blueprint):
                 next_line_is_blueprint = False
                 blueprint_lines.append(cleaned_line)
@@ -41,13 +54,12 @@ def extract_blueprint_lines(lines: list[str]):
                 class_line = cleaned_line
     member_name = member_name_from_class_line(class_line)
 
-
     return member_name, blueprint_lines
 
 def parse_blueprints_from_lines(lines: list[str], delegates: list[Delegate] = []) -> BlueprintList:
     delegate_lines = extract_delegate_lines(lines)
     member_name, blueprint_lines = extract_blueprint_lines(lines)
-    
+
     if (len(delegates) == 0):
         pre_parsed_delegates = parse_delegates(delegate_lines)
     else:

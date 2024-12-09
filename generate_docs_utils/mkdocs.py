@@ -7,7 +7,7 @@ from generate_docs import unreal_engine_blocks
 import yaml
 import html
 
-from Blueprint import Blueprint, BlueprintInput, BlueprintOutput
+from Blueprint import Blueprint, BlueprintDescription, BlueprintInput, BlueprintOutput
 from Delegate import Delegate, DelegateInput, DelegateOutput
 from read_header_file import parse_delegates
 
@@ -73,9 +73,10 @@ def generate_markdown_for_each_file(docs_directory: str, files_to_document):
             f.write(file_header(os.path.basename(file)[:-2]))
             for block in blocks:
                 document_blueprint_metadata(block.blueprint, f)
+                write_block_description(block.blueprint.meta.description, f)
                 html = as_html(block.raw)
                 f.write(html)
-                f.writelines(["", ""])
+                f.writelines([""])
 
 def parse_all_delegates(files: list[str]) -> list[Delegate]:
     all_delegates = []
@@ -134,6 +135,23 @@ def write_inputs(inputs: list[BlueprintInput], f):
 def write_delegate_details(delegate: Delegate, f):
     f.write(f"    - {delegate.name}: `{delegate.unreal_signature}`\n")
 
+
+def write_block_description(blueprint_description: BlueprintDescription, f):
+    f.write("\n<div markdown=\"1\">\n")
+
+    f.write(f"<details markdown=\"1\">\n")
+    f.write(f"<summary>Description</summary>\n\n")
+    
+    f.write(f"{blueprint_description.description}\n")
+    if len(blueprint_description.param_descriptions) > 0:
+        f.write("\n#### Parameters\n")
+        write_param_descriptions(blueprint_description.param_descriptions, f)
+    f.write(f"\n</details>\n\n")
+    f.write("\n</div>\n")
+
+def write_param_descriptions(param_descriptions: dict[str, str], f):
+    for param, description in param_descriptions.items():
+        f.write(f"\n- {param}: {description}\n")
 
 if __name__ == "__main__":
     scan_dir = sys.argv[1]

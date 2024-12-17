@@ -36,6 +36,10 @@ DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(int32, FMapStringToInt32Delegate, FStri
 UDELEGATE(BlueprintCallable)
 DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(UMaterialInstanceDynamic*, FMapFloatToMIDDelegate, float, Element);
 
+// Delegate for mapping Material Vector Parameter Value to Linear Color
+UDELEGATE(BlueprintCallable)
+DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(FLinearColor, FMapVectorParameterValueToLinearColorDelegate, FVectorParameterValue, Element);
+
 UCLASS()
 class UNREALFUNCTIONALPROGRAMMING_API UMap : public UBlueprintFunctionLibrary
 {
@@ -70,4 +74,8 @@ public:
     /** function from FString to int32 */
     UFUNCTION(BlueprintCallable, Category = "Functional")
     static TArray<int32> Map_StringToInt32(const TArray<FString>& Array, FMapStringToInt32Delegate Function);
+
+    /** Map a Material Vector Parameter Value to a Linear Color */
+    UFUNCTION(BlueprintCallable, Category = "Functional")
+    static TArray<FLinearColor> Map_VectorParameterValueToLinearColor(const TArray<FVectorParameterValue>& Array, FMapVectorParameterValueToLinearColorDelegate Function);
 };

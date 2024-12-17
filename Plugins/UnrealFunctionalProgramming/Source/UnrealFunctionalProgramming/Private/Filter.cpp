@@ -57,3 +57,18 @@ TArray<FString> UFilter::Filter_By_Index_FString(const TArray<FString>& Array, F
 {
     return Filter_Internal_With_Index<FString, FFilterInt32Delegate>(Array, Predicate);
 }
+
+TArray<FVector> UFilter::Filter_FVector(const TArray<FVector>& Array, FFilterFVectorDelegate Predicate)
+{
+    return Filter_Internal<FVector, FFilterFVectorDelegate>(Array, Predicate);
+}
+
+TArray<FLinearColor> UFilter::Filter_LinearColor(const TArray<FLinearColor>& Array, FFilterLinearColorDelegate Predicate)
+{
+    return Filter_Internal<FLinearColor, FFilterLinearColorDelegate>(Array, Predicate);
+}
+
+TArray<FVectorParameterValue> UFilter::Filter_VectorParameterValue(const TArray<FVectorParameterValue>& Array, FFilterVectorParameterValueDelegate Predicate)
+{
+    return Filter_Internal<FVectorParameterValue, FFilterVectorParameterValueDelegate>(Array, Predicate);
+}

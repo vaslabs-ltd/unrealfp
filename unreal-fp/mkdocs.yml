@@ -10,11 +10,11 @@ nav:
 - fold: fold.md
 - forall: forall.md
 - exists: exists.md
-- map: map.md
 - filter: filter.md
 - functions: functions.md
 - flatmap: flatmap.md
 - arrays: arrays.md
+- map: map.md
 repo_url: https://gitlab.com/vaslabs/unrealfp
 site_name: UnrealFP
 theme:

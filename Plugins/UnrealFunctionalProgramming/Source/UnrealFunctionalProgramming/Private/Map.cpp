@@ -82,3 +82,8 @@ TArray<FText> UMap::Map_Int32ToText(const TArray<int32>& Array, FMapInt32ToTextD
 {
     return Map_Internal<int32, FText, FMapInt32ToTextDelegate>(Array, Function);
 }
+
+TArray<FLinearColor> UMap::Map_VectorParameterValueToLinearColor(const TArray<FVectorParameterValue>& Array, FMapVectorParameterValueToLinearColorDelegate Function)
+{
+    return Map_Internal<FVectorParameterValue, FLinearColor, FMapVectorParameterValueToLinearColorDelegate>(Array, Function);
+}

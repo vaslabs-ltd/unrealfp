@@ -4,7 +4,7 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "FlatMap.generated.h"
 
-UDELEGATE(BlueprintCallable)
+UDELEGATE(BlueprintPure)
 DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(TArray<int32>, FFlatMapStringToInt32Delegate, FString, Element);
 
 
@@ -15,6 +15,6 @@ class UNREALFUNCTIONALPROGRAMMING_API UFlatMap : public UBlueprintFunctionLibrar
 
 public:
     /** FlatMap function from FString to int32 array */
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "Functional")
     static TArray<int32> FlatMap_StringToInt32(const TArray<FString>& Array, FFlatMapStringToInt32Delegate Function);
 };

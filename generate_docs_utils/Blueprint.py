@@ -12,10 +12,11 @@ class BlueprintDescription(object):
         self.param_descriptions = param_descriptions
 
 class BlueprintMetadata(object):
-    def __init__(self, category: str, description: BlueprintDescription, callable: bool):
+    def __init__(self, category: str, description: BlueprintDescription, callable: bool, is_pure: bool):
         self.category = category
         self.description = description
         self.callable = callable
+        self.is_pure = is_pure
 
 class TypeWrapper(UnrealType):
 
@@ -43,10 +44,11 @@ class BlueprintInput(UnrealType):
             return super().category(type)
 
 class BlueprintOutput(UnrealType):
-    def __init__(self, type: str):
+    def __init__(self, type: str, delegate: Optional[Delegate]):
         super().__init__(type)
         self.GUID = uuid.uuid4().hex.upper()
         self.unreal_signature = self.unreal_signature_text(type)
+        self.delegate = delegate
 
     def __str__(self):
         return f'BlueprintOutput(type={self.type})'
@@ -193,6 +195,7 @@ def parse_blueprint_metadata(line: str, description: BlueprintDescription) -> Bl
 
     blueprint_metadata_parts = list(map(lambda x: x.strip(), effective_line.split(",")))
     callable = blueprint_metadata_parts[0] == "BlueprintCallable"
+    is_pure = blueprint_metadata_parts[0] == "BlueprintPure"
     category = ""
     for blueprint_metadata_part in blueprint_metadata_parts[1:]:
         if blueprint_metadata_part.find("="):
@@ -203,7 +206,7 @@ def parse_blueprint_metadata(line: str, description: BlueprintDescription) -> Bl
 
             # add more metadata here
 
-    return BlueprintMetadata(category, description, callable)
+    return BlueprintMetadata(category, description, callable, is_pure)
 
 
 def parse_blueprint_line(pre_parsed_delegates: list[Delegate], meta: BlueprintMetadata, line: str) -> Blueprint:
@@ -226,8 +229,12 @@ def parse_blueprint_line(pre_parsed_delegates: list[Delegate], meta: BlueprintMe
             method_type = detail
     
     inputs = parse_blueprint_inputs(pre_parsed_delegates, parameters_parts)
-    output = BlueprintOutput(method_type)
-
+    delegate = list(filter(lambda x: x.name == method_type, pre_parsed_delegates))
+    if len(delegate) > 0:
+        output = BlueprintOutput(method_type, delegate.pop())
+    else:
+        output = BlueprintOutput(method_type, None)
+        
     return Blueprint(method_name, meta, inputs, [output])
 
 

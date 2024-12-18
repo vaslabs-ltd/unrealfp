@@ -9,7 +9,7 @@
 
 
 
-UDELEGATE(BlueprintCallable)
+UDELEGATE(BlueprintPure)
 DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(bool, FExistsInt32Delegate, int32, Element);
 
 UCLASS()
@@ -19,6 +19,6 @@ class UNREALFUNCTIONALPROGRAMMING_API UExists : public UBlueprintFunctionLibrary
 
 public:
 
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "Functional")
     static bool Exists_Int32(const TArray<int32>& Array, FExistsInt32Delegate Predicate);
 };

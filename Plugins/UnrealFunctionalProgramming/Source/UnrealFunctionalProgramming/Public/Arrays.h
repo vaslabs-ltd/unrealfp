@@ -23,7 +23,7 @@ public:
      * @param Start The starting index of the range.
      * @param End The ending index of the range exclusive.
      */
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "Functional")
     static TArray<int32> Generate_ArrayInt32(int32 Start, int32 End, FInt32Int32Delegate Function);
 
     /**
@@ -34,7 +34,7 @@ public:
      * @param Start The starting index of the range.
      * @param End The ending index of the range exclusive.
      */
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "Functional")
     static TArray<int32> Generate_ArrayInt32FromInt32(int32 Feed, int32 Start, int32 End, FInt32Int32ToInt32Delegate Function);
 
     /**
@@ -45,7 +45,7 @@ public:
      * @param ArrayB The second input array.
      * @param Result The resulting merged array.
      */
-    UFUNCTION(BlueprintCallable, CustomThunk, meta = (CustomStructureParam = "ArrayA,ArrayB,Result"), Category = "Functional|Arrays")
+    UFUNCTION(BlueprintPure, CustomThunk, meta = (CustomStructureParam = "ArrayA,ArrayB,Result"), Category = "Functional|Arrays")
     static void Merge_Any(const FGenericStruct& ArrayA, const FGenericStruct& ArrayB, FGenericStruct& Result);
 
     DECLARE_FUNCTION(execMerge_Any);
@@ -57,7 +57,7 @@ public:
      * @param Array The input array of FStrings.
      * @param Separator The string to insert between each element.
      */
-    UFUNCTION(BlueprintCallable, Category = "Functional|Arrays")
+    UFUNCTION(BlueprintPure, Category = "Functional|Arrays")
     static FString MkString(const TArray<FString>& Array, const FString& Separator);
 
     /** 
@@ -66,6 +66,6 @@ public:
      * @param Array The input array of integers.
      * @param Separator The string to insert between each element.
      */
-    UFUNCTION(BlueprintCallable, Category = "Functional|Arrays")
+    UFUNCTION(BlueprintPure, Category = "Functional|Arrays")
     static FString MkString_Int32(const TArray<int32>& Array, const FString& Separator);
 };

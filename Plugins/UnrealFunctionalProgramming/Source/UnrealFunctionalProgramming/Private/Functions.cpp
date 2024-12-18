@@ -23,3 +23,16 @@ bool UFunctions::ApplyInt32ToBoolFunction(int32 Input, FInt32BoolDelegate Functi
 {
     return ApplyFunction_Internal<bool, FInt32BoolDelegate>(Input, Function);
 }
+
+FLinearColor UFunctions::ConvertVectorParameterValueToLinearColor(FVectorParameterValue Element)
+{
+    return Element.ParameterValue;
+}
+
+FMapVectorParameterValueToLinearColorDelegate UFunctions::GetVectorParamValueToLinearColorDelegate()
+{
+    UFunctions* DefaultObject = GetMutableDefault<UFunctions>();
+    FMapVectorParameterValueToLinearColorDelegate Delegate;
+    Delegate.BindUFunction(DefaultObject, "ConvertVectorParameterValueToLinearColor");
+    return Delegate;
+}

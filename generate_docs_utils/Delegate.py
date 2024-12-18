@@ -56,13 +56,13 @@ class Delegate(object):
 def parse_delegates(lines: list[str]) -> list[Delegate]:
     """
     Parses all delegates from a header file, lines representation.
-    Picks up every line under UDELEGATE(BlueprintCallable)
+    Picks up every line under UDELEGATE
     and parses the delegate out of it
     """
     delegates = []
     next_line_is_delegate = False
     for line in lines:
-        if (not next_line_is_delegate and line.startswith("UDELEGATE(BlueprintCallable)")):
+        if (not next_line_is_delegate and line.startswith("UDELEGATE")):
             next_line_is_delegate = True
         elif (next_line_is_delegate):
             next_line_is_delegate = False

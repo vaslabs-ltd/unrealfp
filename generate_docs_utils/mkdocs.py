@@ -113,7 +113,11 @@ def write_outputs(outputs: list[BlueprintOutput], f):
         f.write("()\n")
     else:
         for output in outputs:
-            f.write(f"- `{output.unreal_signature}`\n")
+            if (output.delegate is not None):
+                f.write(f"- **Delegate**\n")
+                write_delegate_details(output.delegate, f)
+            else:
+                f.write(f"- `{output.unreal_signature}`\n")
     f.write(f"\n</details>\n\n")
     f.write("\n</div>\n")
 

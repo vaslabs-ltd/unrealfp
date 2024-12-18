@@ -31,14 +31,14 @@ class TestDelegateParsing:
 
     def parsesAllDelegates(self):
         input = [
-            "UDELEGATE(BlueprintCallable)",
+            "UDELEGATE(BlueprintPure)",
             "DECLARE_DYNAMIC_DELEGATE_OneParam(FForeachInt64Delegate, int64, Element);",
             "",
-            "UDELEGATE(BlueprintCallable)",
+            "UDELEGATE(BlueprintPure)",
             "DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(bool, FFilterInt32Delegate, int32, Element);",
-            "UDELEGATE(BlueprintCallable)",
+            "UDELEGATE(BlueprintPure)",
             "DECLARE_DYNAMIC_DELEGATE_RetVal_TwoParams(bool, FFilterInt32Delegate, int32, Element, int32, Element2);",
-            "UDELEGATE(BlueprintCallable)",
+            "UDELEGATE(BlueprintPure)",
             "DECLARE_DYNAMIC_DELEGATE_OneParam(FForeachInt64Delegate, int64, Element);",
         ]
         delegates = parse_delegates(input)

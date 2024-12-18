@@ -16,7 +16,7 @@ End Object
 
 
 import uuid
-from Blueprint import Blueprint, BlueprintInput, BlueprintList, BlueprintOutput
+from Blueprint import Blueprint, BlueprintInput, BlueprintList, BlueprintMetadata, BlueprintOutput
 
 class SerializedBlueprint(object):
    def __init__(self, blueprint: Blueprint, raw: str):
@@ -38,12 +38,19 @@ def serialize_blueprint(member_parent: str, member_name: str, blueprint: Bluepri
    return f"""{begin_object_class()}
    NodeGuid={guid}
    FunctionReference=(MemberParent="/Script/CoreUObject.Class'{member_parent}'",MemberName="{member_name}")
-   CustomProperties Pin (PinId=BF1B82810E624ED8BAA2555AE7BBFC1B,PinName="execute",PinToolTip="\\nExec",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
-   CustomProperties Pin (PinId=73A1E04A9CF34C35B815ED141DCE9ABC,PinName="then",PinToolTip="\\nExec",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   {serialize_callable(blueprint.meta)}
    {serialize_input_properties(blueprint.inputs)}
    {serialize_output_properties(blueprint.outputs)}
    {end_object()}
    """.replace(",\n", ",").replace("   ", " ")
+
+
+def serialize_callable(meta: BlueprintMetadata) -> str:
+   if meta.is_pure:
+      return ""
+   elif meta.callable:
+      return """CustomProperties Pin (PinId=BF1B82810E624ED8BAA2555AE7BBFC1B,PinName="execute",PinToolTip="\\nExec",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   CustomProperties Pin (PinId=73A1E04A9CF34C35B815ED141DCE9ABC,PinName="then",PinToolTip="\\nExec",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)"""
 
 def begin_object_class() -> str:
    return """Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="K2Node_CallFunction" """
@@ -66,7 +73,10 @@ def serialize_output_properties(outputs: list[BlueprintOutput]) -> str:
 
 def serialize_output_property(output: BlueprintOutput) -> str:
    category = output.unreal_category
-   return create_output_pin(output.GUID, "ReturnValue", "", category, output.unreal_container_type)
+   if (output.delegate):
+      return create_delegate_return_pin(output.GUID, output.delegate.name, "Connect a delegate function")
+   else:
+      return create_output_pin(output.GUID, "ReturnValue", "", category, output.unreal_container_type)
 
 def serialize_input_property(input: BlueprintInput) -> str:
    if input.delegate is not None:
@@ -117,6 +127,27 @@ def create_delegate_pin(delegate_name: str) -> str:
    PinType.bSerializeAsSinglePrecisionFloat=False,
    """.replace(",\n", ",").replace("   ", " ")
 
+
+def create_delegate_return_pin(pin_id: str, delegate_name: str, tooltip: str) -> str:
+   return f"""Pin (PinId={pin_id},PinName="ReturnValue",
+PinToolTip="{tooltip}",
+Direction="EGPD_Output",
+PinType.PinCategory="delegate",PinType.PinSubCategory="",
+PinType.PinSubCategoryObject=None,
+PinType.PinSubCategoryMemberReference=(MemberParent="/Script/CoreUObject.Package'/Script/UnrealFunctionalProgramming'",
+MemberName="{delegate_name}__DelegateSignature"),
+PinType.PinValueType=(),
+PinType.ContainerType=None,
+PinType.bIsReference=False,
+PinType.bIsConst=False,
+PinType.bIsWeakPointer=False,
+PinType.bIsUObjectWrapper=False,
+PinType.bSerializeAsSinglePrecisionFloat=False,
+PersistentGuid=00000000000000000000000000000000,bHidden=False,
+bNotConnectable=False,bDefaultValueIsReadOnly=False,
+bDefaultValueIsIgnored=False,
+bAdvancedView=False,
+bOrphanedPin=False,)""".replace(",\n", ",").replace("   ", " ")
 
 def create_return_pin(category: str, container_type: str) -> str:
    return f"""Direction="EGPD_Output",

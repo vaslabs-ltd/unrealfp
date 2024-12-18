@@ -4,7 +4,10 @@ unreal_types = {
    "int64": "int64",
    "float": "float",
    "bool": "bool",
-   "void": "()"
+   "void": "()",
+   "FVector": "Vector",
+   "FLinearColor": "struct",
+   "FVectorParameterValue": "struct",
 }
 
 class UnrealType(object):

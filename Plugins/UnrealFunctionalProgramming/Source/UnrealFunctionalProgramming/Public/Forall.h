@@ -9,7 +9,7 @@
 
 // ==================== FORALL =============================================
 
-UDELEGATE(BlueprintCallable)
+UDELEGATE(BlueprintPure)
 DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(bool, FForAllInt32Delegate, int32, Element);
 
 UCLASS()
@@ -19,6 +19,6 @@ class UNREALFUNCTIONALPROGRAMMING_API UForall : public UBlueprintFunctionLibrary
 
 public:
     // ================ FORALL ========================================
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "Functional")
     static bool ForAll_Int32(const TArray<int32>& Array, FForAllInt32Delegate Predicate);
 };

@@ -21,7 +21,7 @@ mkdocs_base_config = {
         'include_sidebar': True
     },
     'markdown_extensions': ['md_in_html', 'pymdownx.extra'],
-    'repo_url': 'https://gitlab.com/vaslabs/unrealfp'
+    'repo_url': 'https://github.com/vaslabs-ltd/unrealfp'
     
 }
 

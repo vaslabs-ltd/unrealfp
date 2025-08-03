@@ -14,6 +14,9 @@ UnrealFP is a Work in Progress. The main goals are:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xx20yftawsY?si=whI5ZrJwfAlUIGRj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+#### Note
+
+The video was created before most of the functions were converted to pure blocks!
 
 ## Unreal Engine
 

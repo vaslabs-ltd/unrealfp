@@ -7,7 +7,7 @@ ReturnType ApplyFunction_Internal(InputType Input, DelegateType Function)
 {
     if (Function.IsBound())
     {
-        return Function.Execute(Input);
+        return (ReturnType)(Function.Execute(Input));
     }
     else
     {

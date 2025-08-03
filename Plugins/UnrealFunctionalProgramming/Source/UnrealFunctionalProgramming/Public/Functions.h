@@ -16,7 +16,7 @@ DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(int32, FInt32Int32Delegate, int32, Inpu
 
 // Delegate for boolean
 UDELEGATE(BlueprintPure)
-DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(int32, FInt32BoolDelegate, bool, Input);
+DECLARE_DYNAMIC_DELEGATE_RetVal_OneParam(bool, FInt32BoolDelegate, int32, Input);
 
 // Delegate for int32 -> Array<int32>
 UDELEGATE(BlueprintPure)

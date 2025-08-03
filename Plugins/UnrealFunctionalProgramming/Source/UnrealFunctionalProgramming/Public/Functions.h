@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Materials/MaterialInstance.h" // FVectorParameterValue
+
 #include "Kismet/BlueprintFunctionLibrary.h"
 
 #include "Functions.generated.h"
@@ -35,10 +37,10 @@ class UNREALFUNCTIONALPROGRAMMING_API UFunctions : public UBlueprintFunctionLibr
 
 public:
     // ================ int32 ========================================
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static int32 ApplyInt32ToInt32Function(int32 Input, FInt32Int32Delegate Function);
 
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static bool ApplyInt32ToBoolFunction(int32 Input, FInt32BoolDelegate Function);
 
     /** conversion function to map FVectorParameterValue to FLinearColor */
@@ -46,6 +48,6 @@ public:
     static FLinearColor ConvertVectorParameterValueToLinearColor(FVectorParameterValue Element);
 
     /** Blueprint-callable function to return the pre-bound delegate  that extracts a linear color delegate from a vector parameter value */
-    UFUNCTION(BlueprintPure, Category = "Functional|Delegates")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP|Delegates")
     static FMapVectorParameterValueToLinearColorDelegate GetVectorParamValueToLinearColorDelegate();
 };

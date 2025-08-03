@@ -1,0 +1,54 @@
+name: Docs and Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_generate_docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install dependencies
+        run: |
+          cd generate_docs_utils
+          pip install -r requirements-dev.txt
+      - name: Run tests
+        run: |
+          cd generate_docs_utils
+          python -m pytest tests/
+
+  build_docs:
+    runs-on: ubuntu-latest
+    needs: test_generate_docs
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build docs
+        run: ./generate_docs.sh
+      - name: Copy site to public
+        run: |
+          mkdir public
+          cp -r unreal-fp/site/* public/
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build_docs
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

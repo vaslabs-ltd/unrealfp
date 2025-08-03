@@ -6,18 +6,21 @@
 		},
 		{
 			"name": "UE5",
-			"path": "/home/vnicolaou/UnrealEngine-5.5.0"
+			"path": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 		}
 	],
 	"settings": {
 		"typescript.tsc.autoDetect": "off",
 		"npm.autoDetect": "off",
 		"terminal.integrated.env.linux": {
-			"PATH": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64:${env:PATH}",
-			"DOTNET_ROOT": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64",
-			"DOTNET_HOST_PATH": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64/dotnet",
+			"PATH": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64:${env:PATH}",
+			"DOTNET_ROOT": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64",
+			"DOTNET_HOST_PATH": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64/dotnet",
 			"DOTNET_MULTILEVEL_LOOKUP": "0",
 			"DOTNET_ROLL_FORWARD": "LatestMajor"
+		},
+		"files.associations": {
+			"*.inc": "cpp"
 		}
 	},
 	"extensions": {
@@ -43,7 +46,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -63,7 +66,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -81,7 +84,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -98,7 +101,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -118,7 +121,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -136,7 +139,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -153,7 +156,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -173,7 +176,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -191,7 +194,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -208,7 +211,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -228,7 +231,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -246,7 +249,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -263,7 +266,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -283,7 +286,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -301,7 +304,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -318,7 +321,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -338,7 +341,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -356,7 +359,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -373,7 +376,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -393,7 +396,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -411,7 +414,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -428,7 +431,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -448,7 +451,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -466,7 +469,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -483,7 +486,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -503,7 +506,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -521,7 +524,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -538,7 +541,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -558,7 +561,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -576,7 +579,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -593,7 +596,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -613,7 +616,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -631,7 +634,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -648,7 +651,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -668,7 +671,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -686,7 +689,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -703,7 +706,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -723,7 +726,7 @@
 				],
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			},
 			{
@@ -741,7 +744,7 @@
 				"problemMatcher": "$msCompile",
 				"type": "shell",
 				"options": {
-					"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+					"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 				}
 			}
 		]
@@ -756,10 +759,14 @@
 				"preLaunchTask": "UnrealFP Linux Debug Build",
 				"args": [
 				],
-				"cwd": "/home/vnicolaou/UnrealEngine-5.5.0",
+				"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine",
 				"type": "cppdbg",
-				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
-				"showDisplayString": true
+				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/UnrealFP": "/home/vnicolaou/Documents/Unreal Projects/UnrealFP",
+					"/UEVFS/Root": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
+				}
 			},
 			{
 				"name": "Launch UnrealFP (DebugGame)",
@@ -768,10 +775,14 @@
 				"preLaunchTask": "UnrealFP Linux DebugGame Build",
 				"args": [
 				],
-				"cwd": "/home/vnicolaou/UnrealEngine-5.5.0",
+				"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine",
 				"type": "cppdbg",
-				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
-				"showDisplayString": true
+				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/UnrealFP": "/home/vnicolaou/Documents/Unreal Projects/UnrealFP",
+					"/UEVFS/Root": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
+				}
 			},
 			{
 				"name": "Launch UnrealFP (Development)",
@@ -780,10 +791,14 @@
 				"preLaunchTask": "UnrealFP Linux Development Build",
 				"args": [
 				],
-				"cwd": "/home/vnicolaou/UnrealEngine-5.5.0",
+				"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine",
 				"type": "cppdbg",
-				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
-				"showDisplayString": true
+				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/UnrealFP": "/home/vnicolaou/Documents/Unreal Projects/UnrealFP",
+					"/UEVFS/Root": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
+				}
 			},
 			{
 				"name": "Launch UnrealFP (Test)",
@@ -792,10 +807,14 @@
 				"preLaunchTask": "UnrealFP Linux Test Build",
 				"args": [
 				],
-				"cwd": "/home/vnicolaou/UnrealEngine-5.5.0",
+				"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine",
 				"type": "cppdbg",
-				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
-				"showDisplayString": true
+				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/UnrealFP": "/home/vnicolaou/Documents/Unreal Projects/UnrealFP",
+					"/UEVFS/Root": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
+				}
 			},
 			{
 				"name": "Launch UnrealFP (Shipping)",
@@ -804,56 +823,72 @@
 				"preLaunchTask": "UnrealFP Linux Shipping Build",
 				"args": [
 				],
-				"cwd": "/home/vnicolaou/UnrealEngine-5.5.0",
+				"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine",
 				"type": "cppdbg",
-				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
-				"showDisplayString": true
+				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/UnrealFP": "/home/vnicolaou/Documents/Unreal Projects/UnrealFP",
+					"/UEVFS/Root": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
+				}
 			},
 			{
 				"name": "Launch UnrealFPEditor (Debug)",
 				"request": "launch",
-				"program": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Binaries/Linux/UnrealEditor-Linux-Debug",
+				"program": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Binaries/Linux/UnrealEditor-Linux-Debug",
 				"preLaunchTask": "UnrealFPEditor Linux Debug Build",
 				"args": [
 					"/home/vnicolaou/Documents/Unreal Projects/UnrealFP/UnrealFP.uproject"
 				],
-				"cwd": "/home/vnicolaou/UnrealEngine-5.5.0",
+				"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine",
 				"type": "cppdbg",
-				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
-				"showDisplayString": true
+				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/UnrealFP": "/home/vnicolaou/Documents/Unreal Projects/UnrealFP",
+					"/UEVFS/Root": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
+				}
 			},
 			{
 				"name": "Launch UnrealFPEditor (DebugGame)",
 				"request": "launch",
-				"program": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Binaries/Linux/UnrealEditor-Linux-DebugGame",
+				"program": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Binaries/Linux/UnrealEditor-Linux-DebugGame",
 				"preLaunchTask": "UnrealFPEditor Linux DebugGame Build",
 				"args": [
 					"/home/vnicolaou/Documents/Unreal Projects/UnrealFP/UnrealFP.uproject"
 				],
-				"cwd": "/home/vnicolaou/UnrealEngine-5.5.0",
+				"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine",
 				"type": "cppdbg",
-				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
-				"showDisplayString": true
+				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/UnrealFP": "/home/vnicolaou/Documents/Unreal Projects/UnrealFP",
+					"/UEVFS/Root": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
+				}
 			},
 			{
 				"name": "Launch UnrealFPEditor (Development)",
 				"request": "launch",
-				"program": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Binaries/Linux/UnrealEditor",
+				"program": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Binaries/Linux/UnrealEditor",
 				"preLaunchTask": "UnrealFPEditor Linux Development Build",
 				"args": [
 					"/home/vnicolaou/Documents/Unreal Projects/UnrealFP/UnrealFP.uproject"
 				],
-				"cwd": "/home/vnicolaou/UnrealEngine-5.5.0",
+				"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine",
 				"type": "cppdbg",
-				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
-				"showDisplayString": true
+				"visualizerFile": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true,
+				"sourceFileMap": {
+					"/UEVFS/UnrealFP": "/home/vnicolaou/Documents/Unreal Projects/UnrealFP",
+					"/UEVFS/Root": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
+				}
 			},
 			{
 				"name": "Generate Project Files",
 				"type": "coreclr",
 				"request": "launch",
 				"preLaunchTask": "UnrealBuildTool Linux Development Build",
-				"program": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Build/BatchFiles/RunUBT.bat",
+				"program": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Build/BatchFiles/RunUBT.bat",
 				"args": [
 					"-projectfiles",
 					"-vscode",
@@ -863,16 +898,16 @@
 					"-dotnet"
 				],
 				"env": {
-					"PATH": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64:${env:PATH}",
-					"DOTNET_ROOT": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64",
-					"DOTNET_HOST_PATH": "/home/vnicolaou/UnrealEngine-5.5.0/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64/dotnet",
+					"PATH": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64:${env:PATH}",
+					"DOTNET_ROOT": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64",
+					"DOTNET_HOST_PATH": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64/dotnet",
 					"DOTNET_MULTILEVEL_LOOKUP": "0",
 					"DOTNET_ROLL_FORWARD": "LatestMajor"
 				},
 				"console": "internalConsole",
 				"internalConsoleOptions": "openOnSessionStart",
 				"stopAtEntry": false,
-				"cwd": "/home/vnicolaou/UnrealEngine-5.5.0"
+				"cwd": "/home/vnicolaou/UnrealEngine-5.6/UnrealEngine"
 			}
 		]
 	}

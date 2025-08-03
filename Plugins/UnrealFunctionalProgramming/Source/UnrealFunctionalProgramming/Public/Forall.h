@@ -21,6 +21,6 @@ class UNREALFUNCTIONALPROGRAMMING_API UForall : public UBlueprintFunctionLibrary
 
 public:
     // ================ FORALL ========================================
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static bool ForAll_Int32(const TArray<int32>& Array, FForAllInt32Delegate Predicate);
 };

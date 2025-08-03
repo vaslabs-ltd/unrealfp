@@ -2,8 +2,9 @@
 	"FileVersion": 3,
 	"Version": 1,
 	"VersionName": "1.0",
+	"EngineVersion": "5.6",
 	"FriendlyName": "UnrealFunctionalProgramming",
-	"Description": "FP constructs to speed up blueprint programming",
+	"Description": "FP inspired constructs to speed up blueprint programming",
 	"Category": "Other",
 	"CreatedBy": "Vaslabs LTD",
 	"CreatedByURL": "https://vaslabs.io",
@@ -12,7 +13,7 @@
 	"SupportURL": "",
 	"CanContainContent": true,
 	"IsBetaVersion": true,
-	"IsExperimentalVersion": false,
+	"IsExperimentalVersion": true,
 	"Installed": false,
 	"Modules": [
 		{

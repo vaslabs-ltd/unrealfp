@@ -9,15 +9,11 @@ public class UnrealFunctionalProgramming : ModuleRules
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
         PublicIncludePaths.AddRange(
-            new string[] {
-                "UnrealFunctionalProgramming/Public"
-            }
+            new string[] {}
         );
 
         PrivateIncludePaths.AddRange(
-            new string[] {
-                "UnrealFunctionalProgramming/Private"
-            }
+            new string[] {}
         );
 
         PublicDependencyModuleNames.AddRange(

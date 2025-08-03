@@ -21,6 +21,6 @@ class UNREALFUNCTIONALPROGRAMMING_API UExists : public UBlueprintFunctionLibrary
 
 public:
 
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static bool Exists_Int32(const TArray<int32>& Array, FExistsInt32Delegate Predicate);
 };

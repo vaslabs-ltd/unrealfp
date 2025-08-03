@@ -1,0 +1,35 @@
+name: Package and Release
+
+on:
+  push:
+    tags:
+      - '*'   # Run on any tag
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+            lfs: true
+
+      - name: Make fab_package.sh executable
+        run: chmod +x fab_package.sh
+
+      - name: Run packaging script
+        run: ./fab_package.sh
+
+      - name: Upload UnrealFunctionalProgramming.zip as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: UnrealFunctionalProgramming
+          path: target/fab/UnrealFunctionalProgramming.zip
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          artifacts: target/fab/SteamInputPlugin.zip
+          bodyFile: "README.md"

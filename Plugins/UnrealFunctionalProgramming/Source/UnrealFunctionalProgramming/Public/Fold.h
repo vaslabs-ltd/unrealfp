@@ -25,11 +25,11 @@ class UNREALFUNCTIONALPROGRAMMING_API UFold : public UBlueprintFunctionLibrary
 public:
 
     // ===================== FOLD ===========================================================
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static int32 Fold_Int32(const TArray<int32>& Array, int32 InitialValue, FFoldInt32Delegate Function);
 
     /** Fold function for float arrays */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static float Fold_Float(const TArray<float>& Array, float InitialValue, FFoldFloatDelegate Function);
 
     // add more

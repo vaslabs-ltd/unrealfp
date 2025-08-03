@@ -1,7 +1,5 @@
 // Copyright Vaslabs LTD 2025 All Rights Reserved.
 
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 #pragma once
 
 #include "Modules/ModuleManager.h"

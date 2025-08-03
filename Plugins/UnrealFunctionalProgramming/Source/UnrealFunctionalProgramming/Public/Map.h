@@ -46,34 +46,34 @@ class UNREALFUNCTIONALPROGRAMMING_API UMap : public UBlueprintFunctionLibrary
 public:
     // ================ MAP ========================================
     /** Map function from int32 to int32 */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<int32> Map_Int32ToInt32(const TArray<int32>& Array, FMapInt32ToInt32Delegate Function);
 
     /** Map function from int32 to float */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<float> Map_Int32ToFloat(const TArray<int32>& Array, FMapInt32ToFloatDelegate Function);
 
     /** Map function from int32 to bool */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<bool> Map_Int32ToBool(const TArray<int32>& Array, FMapInt32ToBoolDelegate Function);
 
     /** Map function from int32 to string */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<FString> Map_Int32ToString(const TArray<int32>& Array, FMapInt32ToStringDelegate Function);
 
     /** Map function from int32 to Text */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<FText> Map_Int32ToText(const TArray<int32>& Array, FMapInt32ToTextDelegate Function);
 
     /** Map function from float to UMaterialInstanceDynamic* */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<UMaterialInstanceDynamic*> Map_FloatToMID(const TArray<float>& Array, FMapFloatToMIDDelegate Function);
 
     /** function from FString to int32 */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<int32> Map_StringToInt32(const TArray<FString>& Array, FMapStringToInt32Delegate Function);
 
     /** Map a Material Vector Parameter Value to a Linear Color */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<FLinearColor> Map_VectorParameterValueToLinearColor(const TArray<FVectorParameterValue>& Array, FMapVectorParameterValueToLinearColorDelegate Function);
 };

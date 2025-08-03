@@ -30,21 +30,21 @@ class UNREALFUNCTIONALPROGRAMMING_API UFilter : public UBlueprintFunctionLibrary
 
 public:
     //===================Filter=========================
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<int32> Filter_Int32(const TArray<int32>& Array, FFilterInt32Delegate Predicate);
 
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<FString> Filter_By_Index_FString(const TArray<FString>& Array, FFilterInt32Delegate Predicate);
 
     /** Filter array of vectors structure array */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<FVector> Filter_FVector(const TArray<FVector>& Array, FFilterFVectorDelegate Predicate);
 
     /** Filter array of linear colors */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<FLinearColor> Filter_LinearColor(const TArray<FLinearColor>& Array, FFilterLinearColorDelegate Predicate);
 
     /** Filter array of Material's Vector Parameter Values */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<FVectorParameterValue> Filter_VectorParameterValue(const TArray<FVectorParameterValue>& Array, FFilterVectorParameterValueDelegate Predicate);
 };

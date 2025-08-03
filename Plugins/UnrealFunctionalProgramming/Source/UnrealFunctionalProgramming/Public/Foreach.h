@@ -55,38 +55,38 @@ class UNREALFUNCTIONALPROGRAMMING_API UForeach : public UBlueprintFunctionLibrar
 
 public:
     /** ForeachApply for int32 arrays */
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void ForeachApply_Int32(const TArray<int32>& Array, FForeachInt32Delegate Function);
 
     /** ForeachApply for int64 arrays */
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void ForeachApply_Int64(const TArray<int64>& Array, FForeachInt64Delegate Function);
 
     /** ForeachApply for bool arrays */
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void ForeachApply_Bool(const TArray<bool>& Array, FForeachBoolDelegate Function);
 
     /** ForeachApply for float arrays */
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void ForeachApply_Float(const TArray<float>& Array, FForeachFloatDelegate Function);
 
     /** ForeachApply function for UButton arrays */
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void ForeachApply_Button(const TArray<UButton*>& Array, FForeachButtonDelegate Function);
 
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void Foreach_String(const TArray<FString>& Array, FForeachStringDelegate Function);
 
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void Foreach_Object(const TArray<UObject*>& Array, FForeachObjectDelegate Function);
 
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void Foreach_Actor(const TArray<AActor*>& Array, FForeachActorDelegate Function);
 
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void Foreach_Component(const TArray<UActorComponent*>& Array, FForeachComponentDelegate Function);
 
-    UFUNCTION(BlueprintCallable, Category = "Functional")
+    UFUNCTION(BlueprintCallable, Category = "UnrealFP")
     static void Foreach_Button_With_Index(const TArray<UButton*>& Array, FForeachButtonDelegateWithIndex Function);
     // add more functions for other types as needed
 };

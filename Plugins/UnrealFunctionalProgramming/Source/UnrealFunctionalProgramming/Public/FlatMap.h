@@ -17,6 +17,6 @@ class UNREALFUNCTIONALPROGRAMMING_API UFlatMap : public UBlueprintFunctionLibrar
 
 public:
     /** FlatMap function from FString to int32 array */
-    UFUNCTION(BlueprintPure, Category = "Functional")
+    UFUNCTION(BlueprintPure, Category = "UnrealFP")
     static TArray<int32> FlatMap_StringToInt32(const TArray<FString>& Array, FFlatMapStringToInt32Delegate Function);
 };

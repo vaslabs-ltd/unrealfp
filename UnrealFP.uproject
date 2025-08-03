@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{6D9638D1-1C1D-4885-8104-BF55A74AA1C0}",
+	"EngineAssociation": "{74C00489-C60A-4DDA-9800-B19F475E6FFE}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -10,18 +10,5 @@
 			"LoadingPhase": "Default"
 		}
 	],
-	"Plugins": [
-		{
-			"Name": "ModelingToolsEditorMode",
-			"Enabled": true,
-			"TargetAllowList": [
-				"Editor"
-			]
-		},
-		{
-			"Name": "Smartsuit",
-			"Enabled": true,
-			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/7e20fe7d4247410cb4f7d3e162d61c21"
-		}
-	]
+	"Plugins": []
 }

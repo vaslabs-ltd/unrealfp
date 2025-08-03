@@ -1,3 +1,5 @@
+// Copyright Vaslabs LTD 2025 All Rights Reserved.
+
 #include "Map.h"
 
 // Templated internal function with generic SourceType for primitive types

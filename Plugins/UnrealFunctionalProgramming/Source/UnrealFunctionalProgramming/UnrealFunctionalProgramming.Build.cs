@@ -1,3 +1,5 @@
+// Copyright Vaslabs LTD 2025 All Rights Reserved.
+
 using UnrealBuildTool;
 
 public class UnrealFunctionalProgramming : ModuleRules

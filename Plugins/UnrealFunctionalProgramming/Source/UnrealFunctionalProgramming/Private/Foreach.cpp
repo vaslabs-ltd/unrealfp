@@ -1,3 +1,5 @@
+// Copyright Vaslabs LTD 2025 All Rights Reserved.
+
 #include "Foreach.h"
 
 #include "Components/Button.h"

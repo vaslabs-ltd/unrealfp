@@ -1,3 +1,5 @@
+// Copyright Vaslabs LTD 2025 All Rights Reserved.
+
 #include "Functions.h"
 
 template<typename T, typename DelegateType>

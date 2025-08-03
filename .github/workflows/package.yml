@@ -31,5 +31,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ github.ref_name }}
-          artifacts: target/fab/SteamInputPlugin.zip
+          artifacts: target/fab/UnrealFunctionalProgramming.zip
           bodyFile: "README.md"
